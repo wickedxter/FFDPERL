@@ -1,0 +1,150 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><head>
+<meta http-equiv="Content-Language" content="en-us">
+
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<title>FFDPERL</title>
+<style type="text/css">
+.auto-style1 {
+	font-family: "Courier New";
+	font-size: x-small;
+}
+</style>
+</head>
+<body>
+
+<p><font face="Courier New">FFDPERL - <b>Flat-File database API for PERL</b></font></p>
+<hr>
+<p>&nbsp;</p>
+<p><b><font size="4">NAME</font></b><br>
+<br>
+<font face="Courier New" size="2">FFDPERL</font><font face="Courier New" size="2"> 
+- Flat-File database API for &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp;<big><big><big><span style="font-weight: bold;">FFDPERL v1.0.11B</span></big></big></big></font></p>
+<p>You must create a database first, the fastest way at the moment(will
+be fixed) is the folder you point &nbsp;the new to is your database. So
+for example:<br><br></p><table style="text-align: left; background-color: rgb(27, 137, 191); width: 1126px; height: 83px;" border="1" cellpadding="2" cellspacing="2"><tbody><tr><td style="vertical-align: top;">my $db = ffdperl-&gt;new('SQL','/dir/blah/database');<br><br>the
+folder database is where the files for the database will be kept, so
+make sure you point to the correct folder . Then next create the table,
+examples are below it will create the files that &nbsp;it will need .</td></tr></tbody></table><p></p><p></p>
+<h1 id="SYNOPSIS"><font size="4">SYNOPSIS</font></h1>
+<table style="border-collapse: collapse;" id="AutoNumber1" bgcolor="#99ccff" border="1" bordercolor="#000000" cellpadding="0" cellspacing="0" height="64" width="100%">
+  <tbody><tr>
+    <td height="64" valign="top" width="100%">&nbsp;&nbsp;&nbsp;
+    <font face="Courier New" size="2">use ffdperl;<br>
+&nbsp;&nbsp;&nbsp; <br>
+&nbsp;&nbsp;&nbsp; my $db = ffdper-&gt;new("SQL",'dir/to/db/folder');</font></td>
+  </tr>
+</tbody></table>
+<p>&nbsp;</p>
+<p><b>## Example 1</b></p>
+<table style="border-collapse: collapse;" id="AutoNumber1" bgcolor="#99ccff" border="1" bordercolor="#000000" cellpadding="0" cellspacing="0" height="64" width="100%">
+  <tbody><tr>
+    <td height="64" valign="top" width="100%">&nbsp;&nbsp;&nbsp;
+    <font face="Courier New" size="2">## Create Table<br>
+    <br>
+&nbsp;&nbsp;&nbsp; use ffdperl;</font><p><font face="Courier New" size="2">&nbsp;&nbsp;&nbsp; 
+    my $db = ffdper-&gt;new("SQL",'dir/to/db/folder');</font></p>
+    <p><font face="Courier New" size="2">&nbsp;&nbsp;&nbsp; $db-&gt;QUERY("CREATE 
+    TABLE example VALUES (id|AUTO_INCREMNT,name|VARCHAR,age|INT)");</font></p></td>
+  </tr>
+</tbody></table>
+<p><b>## Example 2</b></p>
+<table style="border-collapse: collapse;" id="AutoNumber2" bgcolor="#99ccff" border="1" bordercolor="#000000" cellpadding="0" cellspacing="0" height="64" width="100%">
+  <tbody><tr>
+    <td height="64" valign="top" width="100%">&nbsp;&nbsp;
+    <font face="Courier New" size="2">&nbsp;## Insert Data<br>
+    <br>
+&nbsp;&nbsp;&nbsp; use ffdperl;</font><p><font face="Courier New" size="2">&nbsp;&nbsp;&nbsp; 
+    my $db = ffdper-&gt;new("SQL",'dir/to/db/folder');</font></p>
+    <p><font face="Courier New" size="2">&nbsp;&nbsp;&nbsp; $db-&gt;QUERY("INSERT 
+    INTO example (name,age) VALUES (jhon,35)");</font></p></td>
+  </tr>
+</tbody></table>
+<p><b>## Example 3</b></p>
+<table style="border-collapse: collapse;" id="AutoNumber3" bgcolor="#99ccff" border="1" bordercolor="#000000" cellpadding="0" cellspacing="0" height="64" width="100%">
+  <tbody><tr>
+    <td height="64" valign="top" width="100%">&nbsp;&nbsp;
+    <font face="Courier New" size="2">&nbsp;## Update Data<br>
+    <br>
+&nbsp;&nbsp;&nbsp; use ffdperl;</font><p><font face="Courier New" size="2">&nbsp;&nbsp;&nbsp; 
+    my $db = ffdper-&gt;new("SQL",'dir/to/db/folder');</font></p><p><font face="Courier New" size="2">To do a single update:</font></p>
+    <p><font face="Courier New" size="2">&nbsp;&nbsp;&nbsp; $db-&gt;QUERY("UPDATE 
+    example SET name=jhonny WHERE name=jhon");</font></p><p><font face="Courier New" size="2">To do multi updates:</font></p><p><font face="Courier New" size="2">&nbsp;&nbsp;&nbsp; </font><font face="Courier New" size="2">$db-&gt;QUERY("UPDATE 
+    example SET (name=jhonny,email=examp@cow.com) WHERE name=jhon");</font></p></td>
+  </tr>
+</tbody></table>
+<p><b>## Example 4</b></p>
+<table style="border-collapse: collapse;" id="AutoNumber4" bgcolor="#99ccff" border="1" bordercolor="#000000" cellpadding="0" cellspacing="0" height="64" width="100%">
+  <tbody><tr>
+    <td height="64" valign="top" width="100%">&nbsp;&nbsp;
+    <font face="Courier New" size="2">&nbsp;## Select Data<br>
+    <br>
+&nbsp;&nbsp;&nbsp; use ffdperl;</font><p><font face="Courier New" size="2">&nbsp;&nbsp;&nbsp; 
+    my $db = ffdper-&gt;new("SQL",'dir/to/db/folder');</font></p><p><font face="Courier New" size="2">&nbsp;&nbsp;&nbsp; Matach by =</font></p>
+    <p><font face="Courier New" size="2">&nbsp;&nbsp;&nbsp; my $data = $db-&gt;QUERY("SELECT 
+    age FROM example WHERE age=35");</font></p>
+	<p class="auto-style1">&nbsp; <font size="2">&nbsp;&nbsp;&nbsp;&nbsp; OR</font></p>
+	<p class="auto-style1"><font size="2">&nbsp;&nbsp; <font face="Courier New" size="2">
+	my $data = $db-&gt;QUERY(&quot;SELECT age FROM example WHERE age&gt;35&quot;);</font></font></p>
+	<p class="auto-style1"><font size="2">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; OR</font></p>
+	<p class="auto-style1"><font size="2">&nbsp;&nbsp; <font face="Courier New" size="2">
+	my $data = $db-&gt;QUERY(&quot;SELECT age FROM example WHERE age&lt;35&quot;);</font></font></p>
+	<p><font face="Courier New" size="2"></font></p>
+    <p><font face="Courier New" size="2">&nbsp;&nbsp;&nbsp; Get All data</font></p><p><font face="Courier New" size="2">&nbsp;&nbsp;&nbsp; my $data = $db-&gt;QUERY("SELECT 
+    * FROM example");</font></p>
+    <p>&nbsp;</p>
+    <p><font face="Courier New" size="2">&nbsp;&nbsp;&nbsp; for my $num (keys 
+    %{$data}){<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; for my $columns ($data-&gt;{$num}){<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; print 
+    "$columns-&gt;{id}&nbsp;</font><font face="Courier New" size="2">$columns-&gt;{name} </font><font face="Courier New" size="2">$columns-&gt;{age}</font><font face="Courier New" size="2">";<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; }<br>
+&nbsp;&nbsp;&nbsp; }</font></p>
+    <p>&nbsp;</p></td>
+  </tr>
+</tbody></table>
+<p><b>## Example 5</b></p>
+<table style="border-collapse: collapse;" id="AutoNumber5" bgcolor="#99ccff" border="1" bordercolor="#000000" cellpadding="0" cellspacing="0" height="64" width="100%">
+  <tbody><tr>
+    <td height="64" valign="top" width="100%">&nbsp;&nbsp;
+    <font face="Courier New" size="2">&nbsp;## Drop Table<br>
+    <br>
+&nbsp;&nbsp;&nbsp; use ffdperl;</font><p><font face="Courier New" size="2">&nbsp;&nbsp;&nbsp; 
+    my $db = ffdper-&gt;new("SQL",'dir/to/db/folder');</font></p>
+    <p><font face="Courier New" size="2">&nbsp;&nbsp;&nbsp; $db-&gt;QUERY("DROP 
+    TABLE example");</font></p></td>
+  </tr>
+</tbody></table>
+<p>&nbsp;</p>
+<p><font face="Times New Roman" size="4">DESCRIPTION</font></p>
+<p><b><font face="Times New Roman">Examples 1-3 &amp; 5 </font></b></p>
+<p><font face="Times New Roman">These examples show how to use the functions all 
+commands come from SQL.<br>
+<br>
+If no errors are caught, then these functions only return 1.</font></p>
+<p>&nbsp;</p>
+<p><b><font face="Times New Roman">Example 4</font></b></p>
+<p><font face="Times New Roman">The select statement/function works as expected 
+accepts =,&gt;,&lt; when matches are needed.</font></p>
+<p><font face="Times New Roman">When matches have been made all data is save in 
+HoH form.<br>
+<br>
+$ex =&nbsp; {<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+1 =&gt; {<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+id =&gt; 1,<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+name =&gt; 'jhon',<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+age =&gt; 34,<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+},<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; };</font></p>
+<p>&nbsp;</p>
+<p>VERSION HISTORY</p>
+<p>up to 1.0.11 - Create Table, Drop Table, Update, Insert, Select<br>Select 
+works with matches &quot; =&nbsp; &quot; , &quot; &gt; &quot; , &quot;&nbsp; &lt;&nbsp;&nbsp; &quot; only single 
+matches (IE &quot;&nbsp; age &gt; 30&nbsp; &quot;)</p>
+<p>1.0.0 - Basic functions nothing to amazing</p>
+<p>&nbsp;</p></body></html>
